@@ -1,0 +1,22 @@
+{
+	"name": "VirtualXP",
+	"short_name": "VirtualXP",
+	"lang": "en-US",
+	"start_url": "https://lrusso.github.io/VirtualXP/VirtualXP.htm",
+	"display": "standalone",
+	"orientation": "landscape",
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"icons": [
+		{
+			"src": "https://lrusso.github.io/VirtualXP/VirtualXPFavIcon_192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "https://lrusso.github.io/VirtualXP/VirtualXPFavIcon_512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
