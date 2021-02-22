@@ -8,6 +8,6 @@ Virtual Machine running in a Web browser.
 
 https://lrusso.github.io/VirtualXP/VirtualXP.htm
 
-## The emulator is a modified version of Halfix
+## The VirtualXP emulator is a modified version of Halfix
 
 https://github.com/nepx/halfix
