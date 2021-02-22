@@ -1,2 +1,4 @@
 # VirtualXP
-Virtual Machine running in a Web browser
+
+Virtual Machine running in a Web browser.
+
