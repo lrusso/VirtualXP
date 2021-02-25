@@ -22,7 +22,8 @@
 			html,body{background-color:black;margin:0;padding:0}
 			#canvas{position:fixed;left:0;right:0;top:0;bottom:0;height:100%;width:100%}
 
-			.pleasewait{position:fixed;width:64px;height:64px;left:0;right:0;top:0px;bottom:0;margin:auto auto;border:0}
+			.percentage{position:fixed;width:64px;height:64px;left:0;right:0;top:140px;bottom:0;margin:auto auto;border:0;font-family:Arial;font-weight:bold;font-size:20px;color:white;text-align:center}
+			.pleasewait{position:fixed;width:64px;height:64px;left:0;right:0;top:0;bottom:0;margin:auto auto;border:0}
 			.lds-spinner{color:white;display:inline-block;position:relative;width:64px;height:64px}
 			.lds-spinner div{transform-origin:32px 32px;animation:lds-spinner 1.2s linear infinite}
 			.lds-spinner div:after{content:" ";display:block;position:fixed;top:3px;left:29px;width:5px;height:14px;border-radius:20%;background:white}
@@ -43,11 +44,89 @@
 	</head>
 	<body>
 		<div class="pleasewait"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+		<div class="percentage"></div>
 		<canvas id="canvas" height="640" width="480"></canvas>
 
 		<script src="VirtualXPLoader.js"></script>
 		<script>
 			var finalResponse;
+
+			function getISOImage()
+				{
+				var oReq = new XMLHttpRequest();
+				oReq.open("GET", "VirtualXP.iso", true);
+				oReq.responseType = "blob";
+				oReq.onload = function (oEvent)
+					{
+					if(oReq.response.type!="text/html")
+						{
+						finalResponse = oReq.response;
+
+						var opts = {reportSpeed: function(s){document.title = "VirtualXP - " + s + " MIPS";}};
+						opts.mem = "192";
+						opts.vgamem = "16";
+						opts.fast = false;
+						opts.bios = "VirtualXPBIOS.bin";
+						opts.vgabios = "VirtualXPVGA.bin";
+						opts.apic = false;
+						opts.acpi = false;
+						opts.pci = false;
+						opts.pcivga = false;
+						opts.floppy = false;
+						opts.winnt_hack = true;
+						opts.canvas = document.getElementById("canvas");
+						opts["cda"] = new File(["empty.txt"], "filename");
+
+						var halfix = new Halfix(opts);
+						halfix.init(function()
+							{
+							halfix.run();
+
+							setTimeout(function()
+								{
+								document.getElementsByClassName("pleasewait")[0].style.display = "none";
+								document.getElementsByClassName("percentage")[0].style.display = "none";
+								},5000);
+							});
+						}
+						else
+						{
+						getISOImage();
+						}
+
+					};
+				oReq.onprogress = function (oEvent)
+					{
+					if (oEvent.total>0)
+						{
+						document.getElementsByClassName("percentage")[0].innerHTML = Math.floor(oEvent.loaded * 100 / oEvent.total) + "%";
+						}
+					};
+				oReq.onerror = function(){setTimeout(function(){getISOImage();},1000);};
+				oReq.ontimeout = function(e){setTimeout(function(){getISOImage();},1000);};
+				oReq.send(null);
+				}
+
+			function detectAltKey(e)
+				{
+				try
+					{
+					// GETTING THE KEY EVENT
+					e = e || window.event;
+
+					// CHECKING IF IT ALT KEY IS PRESSED
+					if (e.altKey)
+						{
+						// PREVENTING THE ALT KEY
+						e.preventDefault();
+						e.stopPropagation();
+						e.stopImmediatePropagation();
+						}
+					}
+					catch(err)
+					{
+					}
+				}
 
 			window.addEventListener("load", function()
 				{
@@ -62,40 +141,12 @@
 						}
 					});
 
-				var oReq = new XMLHttpRequest();
-				oReq.open("GET", "VirtualXP.iso", true);
-				oReq.responseType = "blob";
-				oReq.onload = function (oEvent)
-					{
-					finalResponse = oReq.response;
+				// BUGFIX FOR COMMAND KEY
+				document.addEventListener("keydown",function(e){detectAltKey(e)});
+				document.addEventListener("keypress",function(e){detectAltKey(e)});
+				document.addEventListener("keyup", function(e){detectAltKey(e)});
 
-					var opts = {reportSpeed: function(s){document.title = "VirtualXP - " + s + " MIPS";}};
-					opts.mem = "192";
-					opts.vgamem = "16";
-					opts.fast = false;
-					opts.bios = "VirtualXPBIOS.bin";
-					opts.vgabios = "VirtualXPVGA.bin";
-					opts.apic = false;
-					opts.acpi = false;
-					opts.pci = false;
-					opts.pcivga = false;
-					opts.floppy = false;
-					opts.winnt_hack = true;
-					opts.canvas = document.getElementById("canvas");
-					opts["cda"] = new File(["empty.txt"], "filename");
-
-					var halfix = new Halfix(opts);
-					halfix.init(function()
-						{
-						halfix.run();
-
-						setTimeout(function()
-							{
-							document.getElementsByClassName("pleasewait")[0].style.display = "none";
-							},5000);
-						});
-					};
-				oReq.send(null);
+				getISOImage();
 				});
 
 			if ("serviceWorker" in navigator)
