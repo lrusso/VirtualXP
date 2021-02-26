@@ -30,7 +30,6 @@ It's a self extracting exe file created with the 7-Zip command line that automat
 
 ```
 7z a MODELRAM.EXE -mx9 -sfx "Documents and Settings"
-
 ```
 
 ## The VirtualXP emulator is a modified version of Halfix
