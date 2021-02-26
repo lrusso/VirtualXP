@@ -8,6 +8,14 @@ Virtual Machine running in a Web browser.
 
 https://lrusso.github.io/VirtualXP/VirtualXP.htm
 
+## The MODELRAM.EXE file in the VirtualXP.iso
+
+It's a self extracting exe file created with the 7-Zip command line that extracts the **Documents and Settings** folder in the RAMDisk. The command to create this file is the following:
+
+```
+7z a MODELRAM.EXE -mx9 -sfx "Documents and Settings"
+```
+
 ## The VirtualXP emulator is a modified version of Halfix
 
 https://github.com/nepx/halfix
