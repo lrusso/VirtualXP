@@ -26,7 +26,7 @@ This will unmount the **DEFAULT** file and will save the changes in the file. Af
 
 ## The MODELRAM.EXE file
 
-The **\MODELRAM.EXE** file is a self extracting exe file created with the 7-Zip command line that automatically extracts the **Documents and Settings** folder in the RAMDisk when VirtualXP is booting. The command to create this file is the following:
+Within the **VirtualXP.iso** image you find the **\MODELRAM.EXE** file that it is self extracting exe file created with the 7-Zip command line that automatically extracts the **Documents and Settings** folder in the RAMDisk when VirtualXP is booting. The command to create this file is the following:
 
 ```
 7z a MODELRAM.EXE -mx9 -sfx "Documents and Settings"
