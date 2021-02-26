@@ -24,9 +24,9 @@ reg unload HKLM\OFFLINE
 
 This will unmount the **DEFAULT** file and will save the changes in the file. After this, you must copy the file back to the VirtualXP image file at **\I386\SYSTEM32\CONFIG\DEFAULT**.
 
-## The MODELRAM.EXE file in the VirtualXP.iso
+## The MODELRAM.EXE file
 
-It's a self extracting exe file created with the 7-Zip command line that automatically extracts the **Documents and Settings** folder in the RAMDisk when VirtualXP is booting. The command to create this file is the following:
+The **\MODELRAM.EXE** file is a self extracting exe file created with the 7-Zip command line that automatically extracts the **Documents and Settings** folder in the RAMDisk when VirtualXP is booting. The command to create this file is the following:
 
 ```
 7z a MODELRAM.EXE -mx9 -sfx "Documents and Settings"
