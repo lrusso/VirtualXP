@@ -154,6 +154,12 @@
 					}
 				}
 
+			// DISABLING THE CONTEXT MENU
+			window.oncontextmenu = function()
+				{
+				return false;
+				}
+
 			// SETTING WHAT WILL HAPPEN WHEN THE WEBSITE IS FULLY LOADED
 			window.addEventListener("load", function()
 				{
