@@ -43,7 +43,7 @@ Those lines will:
 * Unmount the **DEFAULT** file and save changes in it.
 * Unmount the **SOFTWARE** file and save changes in it.
 
-After this, you must copy the modified **DEFAULT** and **SOFTWARE** back to the **VirtualXP.iso** image file.
+After this, you must copy the modified **DEFAULT** and **SOFTWARE** files back to the **VirtualXP.iso** image file.
 
 ## The MODELRAM.EXE file
 
