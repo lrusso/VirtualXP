@@ -36,7 +36,14 @@ reg unload HKCU\OFFLINE
 reg unload HKLM\OFFLINE
 ```
 
-This will remove the **HKEY_LOCAL_MACHINE\OFFLINE** and  **HKEY_CURRENT_USER\OFFLINE** Registry folders, unmount the **DEFAULT** and **SOFTWARE** files and will save the changes in those file. After this, you must copy the modified **DEFAULT** and **SOFTWARE** files to the VirtualXP image file at **\I386\SYSTEM32\CONFIG\**.
+Those lines will:
+
+* Remove the **HKEY_CURRENT_USER\OFFLINE** Registry.
+* Remove the **HKEY_LOCAL_MACHINE\OFFLINE** Registry.
+* Unmount the **DEFAULT** file and save changes in it.
+* Unmount the **SOFTWARE** file and save changes in it.
+
+After this, you must copy the modified **DEFAULT** and **SOFTWARE** files to the VirtualXP image file at **\I386\SYSTEM32\CONFIG\**.
 
 ## The MODELRAM.EXE file
 
