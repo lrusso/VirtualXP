@@ -10,19 +10,28 @@ https://lrusso.github.io/VirtualXP/VirtualXP.htm
 
 ## Editing the VirtualXP Registry
 
-Within the **VirtualXP.iso** image file, there is a Registry file **\I386\SYSTEM32\CONFIG\DEFAULT** that you must copy to your hard drive (your hard drive must have a standard Windows installation) and run from that standard Windows installation the following line:
+Within the **VirtualXP.iso** image file you will find the following files that belongs to the System Registry.
+
+| REGISTRY KEY  | FILE |
+| :------------ | :--------------- |
+| HKEY_CURRENT_USER | \I386\SYSTEM32\CONFIG\DEFAULT |
+| HKEY_LOCAL_MACHINE | \I386\SYSTEM32\CONFIG\SOFTWARE |
+
+You must copy the file (Registry) that you need to modify to your hard drive (your hard drive must have a standard Windows installation) and run from that standard Windows installation the following line:
 
 ```
-reg load HKLM\OFFLINE C:\DEFAULT
+reg load HKCU\OFFLINE C:\DEFAULT
+reg load HKLM\OFFLINE C:\SOFTWARE
 ```
 
-This will mount the VirtualXP Registry to **HKEY_LOCAL_MACHINE\OFFLINE**. Now open the Registry editor and at the mentioned location you will find all the settings that VirtualXP is using. Modify all the things that you may need in there and after that run the following line:
+This will mount the VirtualXP Registry to **HKEY_LOCAL_MACHINE\OFFLINE** and  to **HKEY_CURRENT_USER\OFFLINE**. Now open the Registry editor and at the mentioned location you will find all the settings that VirtualXP is using. Modify all the things that you may need in there and after that run the following line:
 
 ```
+reg unload HKCU\OFFLINE
 reg unload HKLM\OFFLINE
 ```
 
-This will remove the **HKEY_LOCAL_MACHINE\OFFLINE** Registry folder, unmount the **DEFAULT** file and will save the changes in the file. After this, you must copy the modified **DEFAULT** file to the VirtualXP image file at **\I386\SYSTEM32\CONFIG\DEFAULT**.
+This will remove the **HKEY_LOCAL_MACHINE\OFFLINE** and  **HKEY_CURRENT_USER\OFFLINE** Registry folders, unmount the **DEFAULT** and **SOFTWARE** files and will save the changes in those file. After this, you must copy the modified **DEFAULT** and **SOFTWARE** files to the VirtualXP image file at **\I386\SYSTEM32\CONFIG\**.
 
 ## The MODELRAM.EXE file
 
