@@ -17,14 +17,14 @@ Within the **VirtualXP.iso** image file you will find the following files that b
 | HKEY_CURRENT_USER | \I386\SYSTEM32\CONFIG\DEFAULT |
 | HKEY_LOCAL_MACHINE | \I386\SYSTEM32\CONFIG\SOFTWARE |
 
-You must copy the file (Registry) that you need to modify to your hard drive (your hard drive must have a standard Windows installation) and run from that standard Windows installation the following line:
+Copy those files to your hard drive (your hard drive must have a standard Windows installation) and run from that standard Windows installation the following lines:
 
 ```
 reg load HKCU\OFFLINE C:\DEFAULT
 reg load HKLM\OFFLINE C:\SOFTWARE
 ```
 
-This will mount the VirtualXP Registry to **HKEY_LOCAL_MACHINE\OFFLINE** and  to **HKEY_CURRENT_USER\OFFLINE**. Now open the Registry editor and at the mentioned location you will find all the settings that VirtualXP is using. Modify all the things that you may need in there and after that run the following line:
+This will mount the VirtualXP Registry in **HKEY_LOCAL_MACHINE\OFFLINE** and **HKEY_CURRENT_USER\OFFLINE**. Now open the Registry editor and at the mentioned location you will find all the settings that VirtualXP is using. Modify all the things that you may need in there and after that run the following lines:
 
 ```
 reg unload HKCU\OFFLINE
