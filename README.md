@@ -24,7 +24,12 @@ reg load HKCU\OFFLINE C:\DEFAULT
 reg load HKLM\OFFLINE C:\SOFTWARE
 ```
 
-This will mount the VirtualXP Registry in **HKEY_LOCAL_MACHINE\OFFLINE** and **HKEY_CURRENT_USER\OFFLINE**. Now open the Registry editor and at the mentioned location you will find all the settings that VirtualXP is using. Modify all the things that you may need in there and after that run the following lines:
+Those lines will mount the VirtualXP Registry in:
+
+* HKEY_CURRENT_USER\OFFLINE 
+* HKEY_LOCAL_MACHINE\OFFLINE
+ 
+Now open the Registry editor and at the mentioned location you will find all the settings that VirtualXP is using. Modify all the things that you may need in there and after that run the following lines:
 
 ```
 reg unload HKCU\OFFLINE
