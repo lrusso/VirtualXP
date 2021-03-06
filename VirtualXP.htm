@@ -66,50 +66,53 @@
 				// SETTING WHAT WILL HAPPEN WHEN THE REQUEST IS FULLY LOADED
 				oReq.onload = function (oEvent)
 					{
-					// CHECKING IF THE RESPONSE TYPE IS NO A HTML DOCUMENT
-					if(oReq.response.type!="text/html")
+					// CHECKING IF THE REQUEST IT'S DONE
+					if (oReq.readyState==oReq.DONE)
 						{
-						// GETTING THE RESPONSE CONTENT
-						finalResponse = oReq.response;
-
-						// SETTING THE OPTIONS FOR THE EMULATOR
-						var opts = {reportSpeed: function(s){document.title = "VirtualXP - " + s + " MIPS";}};
-						opts.mem = "192";
-						opts.vgamem = "16";
-						opts.fast = false;
-						opts.bios = "VirtualXPBIOS.bin";
-						opts.vgabios = "VirtualXPVGA.bin";
-						opts.apic = false;
-						opts.acpi = false;
-						opts.pci = false;
-						opts.pcivga = false;
-						opts.floppy = false;
-						opts.winnt_hack = true;
-						opts.canvas = document.getElementById("canvas");
-						opts["cda"] = new File(["empty.txt"], "filename");
-
-						// CREATING THE EMULATOR
-						var halfix = new Halfix(opts);
-						halfix.init(function()
+						// CHECKING IF THE REQUEST STATUS
+						if (oReq.status==200)
 							{
-							// RUNNING THE EMULATOR
-							halfix.run();
+							// GETTING THE RESPONSE CONTENT
+							finalResponse = oReq.response;
 
-							// WAITING 5 SECONDS
-							setTimeout(function()
+							// SETTING THE OPTIONS FOR THE EMULATOR
+							var opts = {reportSpeed: function(s){document.title = "VirtualXP - " + s + " MIPS";}};
+							opts.mem = "192";
+							opts.vgamem = "16";
+							opts.fast = false;
+							opts.bios = "VirtualXPBIOS.bin";
+							opts.vgabios = "VirtualXPVGA.bin";
+							opts.apic = false;
+							opts.acpi = false;
+							opts.pci = false;
+							opts.pcivga = false;
+							opts.floppy = false;
+							opts.winnt_hack = true;
+							opts.canvas = document.getElementById("canvas");
+							opts["cda"] = new File(["empty.txt"], "filename");
+
+							// CREATING THE EMULATOR
+							var halfix = new Halfix(opts);
+							halfix.init(function()
 								{
-								// HIDING THE PLEASE WAIT ANIMATION AND THE PERCENTAGE
-								document.getElementsByClassName("pleasewait")[0].style.display = "none";
-								document.getElementsByClassName("percentage")[0].style.display = "none";
-								},5000);
-							});
-						}
-						else
-						{
-						// IF THERE IS AN ERROR, THE REQUEST IS EXECUTED ONE MORE TIME
-						getISOImage();
-						}
+								// RUNNING THE EMULATOR
+								halfix.run();
 
+								// WAITING 5 SECONDS
+								setTimeout(function()
+									{
+									// HIDING THE PLEASE WAIT ANIMATION AND THE PERCENTAGE
+									document.getElementsByClassName("pleasewait")[0].style.display = "none";
+									document.getElementsByClassName("percentage")[0].style.display = "none";
+									},5000);
+								});
+							}
+							else
+							{
+							// IF THERE IS AN ERROR, THE REQUEST IS EXECUTED ONE MORE TIME
+							getISOImage();
+							}
+						}
 					};
 
 				// SETTING WHAT WILL HAPPEN WHEN THE REQUEST IS DOWNLOADING THE FILE
