@@ -98,6 +98,9 @@
 								// RUNNING THE EMULATOR
 								halfix.run();
 
+								// FORCING TO UPDATE THE SCREEN EVERY 1 SECOND
+								setInterval(function(){try{halfix.updateScreen();}catch(err){}}, 1000);
+
 								// WAITING 5 SECONDS
 								setTimeout(function()
 									{
@@ -136,17 +139,17 @@
 				oReq.send(null);
 				}
 
-			function detectAltKey(e)
+			function blockSpecialKeys(e)
 				{
 				try
 					{
 					// GETTING THE KEY EVENT
 					e = e || window.event;
 
-					// CHECKING IF IT ALT KEY IS PRESSED
-					if (e.altKey)
+					// CHECKING IF IT ANY SPECIAL KEY IS PRESSED
+					if (e.altKey || e.ctrlKey || e.metaKey || e.keyCode == 27)
 						{
-						// PREVENTING THE ALT KEY
+						// BLOCKING THE SPECIAL KEY
 						e.preventDefault();
 						e.stopPropagation();
 						e.stopImmediatePropagation();
@@ -179,10 +182,10 @@
 						}
 					});
 
-				// BUGFIX FOR THE ALT KEY
-				document.addEventListener("keydown",function(e){detectAltKey(e)});
-				document.addEventListener("keypress",function(e){detectAltKey(e)});
-				document.addEventListener("keyup", function(e){detectAltKey(e)});
+				// BUGFIX FOR THE SPECIALS KEYS
+				document.addEventListener("keydown",function(e){blockSpecialKeys(e)});
+				document.addEventListener("keypress",function(e){blockSpecialKeys(e)});
+				document.addEventListener("keyup", function(e){blockSpecialKeys(e)});
 
 				// REQUESTING THE ISO IMAGE
 				getISOImage();
