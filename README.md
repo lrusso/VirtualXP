@@ -56,3 +56,7 @@ Within the **VirtualXP.iso** image you will find the **\MODELRAM.EXE** file that
 ## The VirtualXP emulator is a modified version of Halfix
 
 https://github.com/nepx/halfix
+
+## Disclaimer
+
+The Windows XP minified image is provided for educational purposes ONLY. This demo is not affiliated with or endorsed by their respective copyright holders. 
