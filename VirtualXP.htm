@@ -187,8 +187,12 @@
 				document.addEventListener("keypress",function(e){blockSpecialKeys(e)});
 				document.addEventListener("keyup", function(e){blockSpecialKeys(e)});
 
-				// REQUESTING THE ISO IMAGE
-				getISOImage();
+				// CHECKING IF IS NOT RUNNING WITHIN AN IFRAME
+				if (window.top == window.self)
+					{
+					// REQUESTING THE ISO IMAGE
+					getISOImage();
+					}
 				});
 
 			if ("serviceWorker" in navigator)
