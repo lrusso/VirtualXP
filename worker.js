@@ -1,20 +1,20 @@
 const filesToCache = [
-	"VirtualXP.htm",
-	"VirtualXP.iso",
-	"VirtualXP.js",
-	"VirtualXP.json",
-	"VirtualXP.png",
-	"VirtualXP.wasm",
-	"VirtualXPBIOS.bin",
-	"VirtualXPFavIcon_16x16.png",
-	"VirtualXPFavIcon_192x192.png",
-	"VirtualXPFavIcon_512x512.png",
-	"VirtualXPLoader.js",
-	"VirtualXPShare.png",
-	"VirtualXPVGA.bin"
+	"Virtual95.htm",
+	"Virtual95.iso",
+	"Virtual95.js",
+	"Virtual95.json",
+	"Virtual95.png",
+	"Virtual95.wasm",
+	"Virtual95BIOS.bin",
+	"Virtual95FavIcon_16x16.png",
+	"Virtual95FavIcon_192x192.png",
+	"Virtual95FavIcon_512x512.png",
+	"Virtual95Loader.js",
+	"Virtual95Share.png",
+	"Virtual95VGA.bin"
 ];
 
-const staticCacheName = "virtualxp-v1";
+const staticCacheName = "Virtual95-v1";
 
 self.addEventListener("install", event => {
 	event.waitUntil(
