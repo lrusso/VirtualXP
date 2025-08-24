@@ -8,6 +8,10 @@ Virtual Machine running in a web browser.
 
 https://lrusso.github.io/VirtualXP/VirtualXP.htm
 
+## Changing the ISO file content
+
+To do this, I used the app ```Magic ISO Maker```.
+
 ## Editing the VirtualXP Registry
 
 Within the **VirtualXP.iso** image file you will find the following files that belongs to the System Registry.
