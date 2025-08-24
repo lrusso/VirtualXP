@@ -10,7 +10,7 @@ https://lrusso.github.io/VirtualXP/VirtualXP.htm
 
 ## Changing the ISO file content
 
-To do this, I used the app ```Magic ISO Maker```.
+To do this, I used the app ```Magic ISO Maker``` and ```WinImage```.
 
 ## Editing the VirtualXP Registry
 
